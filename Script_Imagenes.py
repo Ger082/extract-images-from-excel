@@ -7,7 +7,7 @@ from PIL import ImageGrab
 EXCEL_FILE    = r"C:\Users\GerMachine\Desktop\pruebaInv\Programa.xlsm"
 SHEET_NAME    = "Inventario"
 OUTPUT_FOLDER = r"C:\Users\GerMachine\Desktop\pruebaInv\Imagenes"
-# ------------- FIN CONFIGURACIÓN -------------
+
 
 def export_images():
     # Crear carpeta de salida si no existe
@@ -56,17 +56,16 @@ def export_images():
             nombre = nombre.replace(ch, "_")
         jpg_path = os.path.join(OUTPUT_FOLDER, nombre + ".jpg")
 
-        # Guardar como JPG
+       
         img.convert("RGB").save(jpg_path, "JPEG")
         # Escribir ruta en columna F
         sht.cells(row, 6).value = jpg_path
         print(f"Fila {row}: guardada → {jpg_path}")
 
-    # Guardar y cerrar
+    
     wb.save()
     wb.close()
     app.quit()
-    print("✅ Proceso completado.")
 
 if __name__ == "__main__":
     export_images()
